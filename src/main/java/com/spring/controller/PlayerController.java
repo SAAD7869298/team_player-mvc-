@@ -2,9 +2,12 @@ package com.spring.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,8 +50,12 @@ public class PlayerController {
 	}
 
 	@PostMapping("/savePlayer")
-	public String savePlayer(@ModelAttribute("player") player thePlayer) {
+	public String savePlayer(@Valid @ModelAttribute("player") player thePlayer, BindingResult bindingResult) {
 		// thePlayer will be automatically populated with form data
+
+		if (bindingResult.hasErrors()) {
+			return "addplay"; // Return to form if validation fails
+		}
 		playerService.saveplayer(thePlayer);
 		return "redirect:/players"; // Redirect to a list or home page after saving
 	}

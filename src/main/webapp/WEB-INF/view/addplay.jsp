@@ -15,18 +15,22 @@
 			<tr>
 				<td>Name:</td>
 				<td><form:input path="name" /></td>
+				<td><form:errors path="name" /></td>
 			</tr>
 			<tr>
 				<td>Number:</td>
 				<td><form:input path="number" /></td>
+				<td><form:errors path="number" /></td>
 			</tr>
 			<tr>
 				<td>Address:</td>
 				<td><form:input path="address" /></td>
+				<td><form:errors path="address" /></td>
 			</tr>
 			<tr>
 				<td>Phone:</td>
 				<td><form:input path="phone" /></td>
+				<td><form:errors path="phone" s/></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Add Player" /></td>
